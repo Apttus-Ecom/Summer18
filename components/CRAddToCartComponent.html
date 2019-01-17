@@ -201,6 +201,9 @@
                                 <a href="#filterRules">filterRules</a>
                             </li>
                             <li>
+                                <a href="#onShown">onShown</a>
+                            </li>
+                            <li>
                                 <a href="#addToCart">addToCart</a>
                             </li>
                             <li>
@@ -288,7 +291,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(crService: <a href="../injectables/ConstraintRuleService.html">ConstraintRuleService</a>, a: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>, b: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, c: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, d: <a href="../injectables/CartService.html">CartService</a>, e: <a href="../injectables/ProductService.html">ProductService</a>, f: <a href="../injectables/PriceService.html">PriceService</a>, cd: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+<code>constructor(crService: <a href="../injectables/ConstraintRuleService.html">ConstraintRuleService</a>, a: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>, b: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, c: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, d: ConfigurationService, e: <a href="../injectables/ProductService.html">ProductService</a>, f: <a href="../injectables/PriceService.html">PriceService</a>, cd: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, cs: <a href="../injectables/CartService.html">CartService</a>, elRef: <a href="https://angular.io/api/core/ElementRef" target="_blank">ElementRef</a>)</code>
                     </td>
                 </tr>
 
@@ -357,7 +360,7 @@
                                                         <td>d</td>
                                                   
                                                         <td>
-                                                                    <code><a href="../injectables/CartService.html" target="_self" >CartService</a></code>
+                                                                    <code>ConfigurationService</code>
                                                         </td>
                                                   
                                                     <td>
@@ -394,6 +397,30 @@
                                                   
                                                         <td>
                                                                     <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cs</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/CartService.html" target="_self" >CartService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>elRef</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -697,6 +724,39 @@
                                 <div class="io-description">
                                     
                                 </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onShown"></a>
+                        <span class="name">
+                            <b>
+                            onShown
+                            </b>
+                            <a href="#onShown"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>onShown()</code>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </div>
                     </td>
                 </tr>
             </tbody>
@@ -1171,16 +1231,23 @@ Opens up the cart page for a checkout.</p>
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ng-container *ngIf&#x3D;&quot;product&quot;&gt;
-  &lt;button [ngClass]&#x3D;&quot;&#x27;btn btn-block px-4 btn-sm &#x27; + btnClass&quot; type&#x3D;&quot;button&quot; [disabled]&#x3D;&quot;disabled&quot; *ngIf&#x3D;&quot;configurationEnabled &amp;&amp; complex(); else simple&quot;
-    [routerLink]&#x3D;&quot;[configurationRoute, product[identifier]]&quot;&gt;Configure&lt;/button&gt;
-
+  &lt;div *ngIf&#x3D;&quot;configurationEnabled &amp;&amp; complex(); else simple&quot; [popover]&#x3D;&quot;(productRuleList?.length &gt; 0 || message) ? popTemplate : null&quot;
+    containerClass&#x3D;&quot;aptPopover&quot;
+    container&#x3D;&quot;body&quot;
+    [outsideClick]&#x3D;&quot;true&quot;
+    containerClass&#x3D;&quot;CRPopover&quot;
+    triggers&#x3D;&quot;mouseenter:mouseleave focus:blur&quot;&gt;
+    &lt;button [ngClass]&#x3D;&quot;&#x27;btn btn-block px-4 btn-sm &#x27; + btnClass&quot; type&#x3D;&quot;button&quot; [disabled]&#x3D;&quot;disabled&quot; 
+      [routerLink]&#x3D;&quot;[configurationRoute, product[identifier]]&quot;&gt;Configure&lt;/button&gt;
+  &lt;/div&gt;
   &lt;ng-template #simple&gt;
     &lt;div [popover]&#x3D;&quot;(productRuleList?.length &gt; 0 || message) ? popTemplate : null&quot;
-                  containerClass&#x3D;&quot;aptPopover&quot;
-                  container&#x3D;&quot;body&quot;
-                  [outsideClick]&#x3D;&quot;true&quot;
-                  containerClass&#x3D;&quot;CRPopover&quot;
-                  triggers&#x3D;&quot;mouseenter:mouseleave focus:blur&quot;&gt;
+          containerClass&#x3D;&quot;aptPopover&quot;
+          container&#x3D;&quot;body&quot;
+          [outsideClick]&#x3D;&quot;true&quot;
+          containerClass&#x3D;&quot;CRPopover&quot;
+          triggers&#x3D;&quot;mouseenter:mouseleave focus:blur&quot;
+          placement&#x3D;&quot;{{onShown()}}&quot;&gt;
       &lt;div class&#x3D;&quot;input-group input-group-sm&quot; *ngIf&#x3D;&quot;showQuantityControls; else buttonOnly&quot;&gt;
         &lt;input type&#x3D;&quot;number&quot; class&#x3D;&quot;form-control mr-2&quot; [(ngModel)]&#x3D;&quot;quantity&quot; min&#x3D;&quot;1&quot; name&#x3D;&quot;quantity&quot; /&gt;
         &lt;div class&#x3D;&quot;input-group-append&quot;&gt;
@@ -1240,7 +1307,7 @@ Opens up the cart page for a checkout.</p>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="product">  <button [ngClass]="\'btn btn-block px-4 btn-sm \' + btnClass" type="button" [disabled]="disabled" *ngIf="configurationEnabled && complex(); else simple"    [routerLink]="[configurationRoute, product[identifier]]">Configure</button>  <ng-template #simple>    <div [popover]="(productRuleList?.length > 0 || message) ? popTemplate : null"                  containerClass="aptPopover"                  container="body"                  [outsideClick]="true"                  containerClass="CRPopover"                  triggers="mouseenter:mouseleave focus:blur">      <div class="input-group input-group-sm" *ngIf="showQuantityControls; else buttonOnly">        <input type="number" class="form-control mr-2" [(ngModel)]="quantity" min="1" name="quantity" />        <div class="input-group-append">          <button [ngClass]="\'btn \' + btnClass"                  (click)="addToCart()"                  [ladda]="loading"                  data-style="zoom-in"                  [disabled]="disabled"                  >Add to Cart</button>        </div>      </div>      <ng-template #buttonOnly>        <button [ngClass]="\'btn \' + btnClass"                (click)="addToCart()"                [ladda]="loading"                data-style="zoom-in"                [disabled]="disabled">Add to Cart</button>      </ng-template>    </div>  </ng-template></ng-container><ng-template #popTemplate>  <apt-cr-popover [ruleList]="productRuleList" [product]="product" [message]="message"></apt-cr-popover></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="product">  <div *ngIf="configurationEnabled && complex(); else simple" [popover]="(productRuleList?.length > 0 || message) ? popTemplate : null"    containerClass="aptPopover"    container="body"    [outsideClick]="true"    containerClass="CRPopover"    triggers="mouseenter:mouseleave focus:blur">    <button [ngClass]="\'btn btn-block px-4 btn-sm \' + btnClass" type="button" [disabled]="disabled"       [routerLink]="[configurationRoute, product[identifier]]">Configure</button>  </div>  <ng-template #simple>    <div [popover]="(productRuleList?.length > 0 || message) ? popTemplate : null"          containerClass="aptPopover"          container="body"          [outsideClick]="true"          containerClass="CRPopover"          triggers="mouseenter:mouseleave focus:blur"          placement="{{onShown()}}">      <div class="input-group input-group-sm" *ngIf="showQuantityControls; else buttonOnly">        <input type="number" class="form-control mr-2" [(ngModel)]="quantity" min="1" name="quantity" />        <div class="input-group-append">          <button [ngClass]="\'btn \' + btnClass"                  (click)="addToCart()"                  [ladda]="loading"                  data-style="zoom-in"                  [disabled]="disabled"                  >Add to Cart</button>        </div>      </div>      <ng-template #buttonOnly>        <button [ngClass]="\'btn \' + btnClass"                (click)="addToCart()"                [ladda]="loading"                data-style="zoom-in"                [disabled]="disabled">Add to Cart</button>      </ng-template>    </div>  </ng-template></ng-container><ng-template #popTemplate>  <apt-cr-popover [ruleList]="productRuleList" [product]="product" [message]="message"></apt-cr-popover></ng-template></div>'
     var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'apt-address'},{'name': 'AddToCartComponent', 'selector': 'apt-add-to-cart'},{'name': 'AddToCartDialogComponent', 'selector': 'lib-add-to-cart-dialog'},{'name': 'BreadcrumbComponent', 'selector': 'apt-breadcrumb'},{'name': 'CRAddToCartComponent', 'selector': 'apt-cr-add-to-cart'},{'name': 'CRConstraintAlertComponent', 'selector': 'apt-cr-constraint-alert'},{'name': 'CRIconComponent', 'selector': 'apt-cr-constraint-icon'},{'name': 'CRModalComponent', 'selector': 'apt-cr-modal'},{'name': 'CRPopoverComponent', 'selector': 'apt-cr-popover'},{'name': 'CRProductCardComponent', 'selector': 'apt-cr-product-card'},{'name': 'CRProductCarouselComponent', 'selector': 'apt-cr-product-carousel'},{'name': 'CRRecommendedProductsComponent', 'selector': 'apt-cr-recommended-products'},{'name': 'CRSideMenuComponent', 'selector': 'apt-cr-side-menu'},{'name': 'DependentPicklistComponent', 'selector': 'apt-dependent-picklist'},{'name': 'InputFieldComponent', 'selector': 'apt-input-field'},{'name': 'InputQuantityComponent', 'selector': 'apt-input-quantity'},{'name': 'JumbotronComponent', 'selector': 'apt-jumbotron'},{'name': 'MdSpinnerComponent', 'selector': 'apt-md-spinner'},{'name': 'MiniCartComponent', 'selector': 'apt-mini-cart'},{'name': 'MiniProfileComponent', 'selector': 'apt-mini-profile'},{'name': 'PriceComponent', 'selector': 'apt-price'},{'name': 'ProductCardComponent', 'selector': 'apt-product-card'},{'name': 'ProductCarouselComponent', 'selector': 'apt-product-carousel'},{'name': 'ProductImagesComponent', 'selector': 'apt-product-images'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CRAddToCartComponent'};

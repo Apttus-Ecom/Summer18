@@ -206,7 +206,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(cartService: <a href="../injectables/CartService.html">CartService</a>)</code>
+<code>constructor(config: ConfigurationService)</code>
                     </td>
                 </tr>
 
@@ -224,10 +224,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>cartService</td>
+                                                        <td>config</td>
                                                   
                                                         <td>
-                                                                    <code><a href="../injectables/CartService.html" target="_self" >CartService</a></code>
+                                                                    <code>ConfigurationService</code>
                                                         </td>
                                                   
                                                     <td>
@@ -574,11 +574,15 @@ star-rating{
 }
 .product-code{
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50%;
 }
 .product-category{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 50%;
 }</code></pre>
     </div>
 

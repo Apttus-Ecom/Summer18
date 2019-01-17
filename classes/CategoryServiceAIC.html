@@ -28,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content class">
                    <div class="content-data">
 
 
@@ -37,9 +37,13 @@
 
 
 
+
+
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>PriceListItemService</li>
+  <li>Classes</li>
+  <li>CategoryServiceAIC</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -54,36 +58,23 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/apttus/ecommerce/src/lib/modules/pricing/services/price-list-item.service.ts</code>
+            <code>projects/apttus/ecommerce/src/lib/modules/catalog/services/category/category.aic.service.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>The price list items map a product to a specific price list. They provide the base price for any product in your catalog</p>
 
+            <p class="comment">
+                <h3>Extends</h3>
             </p>
+            <p class="comment">
+                    <code><a href="../injectables/CategoryService.html" target="_self" >CategoryServiceCore</a></code>
+            </p>
+
 
 
             <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#type">type</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -95,10 +86,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#getPriceListItemByCode">getPriceListItemByCode</a>
-                            </li>
-                            <li>
-                                <a href="#globalFilter">globalFilter</a>
+                                <a href="#getCategories">getCategories</a>
                             </li>
                         </ul>
                     </td>
@@ -113,6 +101,7 @@
 </section>
 
 
+
             <section>
     
         <h3 id="methods">
@@ -122,20 +111,20 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="getPriceListItemByCode"></a>
+                        <a name="getCategories"></a>
                         <span class="name">
                             <b>
                                 <span class="modifier">Public</span>
-                            getPriceListItemByCode
+                            getCategories
                             </b>
-                            <a href="#getPriceListItemByCode"><span class="icon ion-ios-link"></span></a>
+                            <a href="#getCategories"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                             <span class="modifier-icon icon ion-ios-reset"></span>
-                        <code>getPriceListItemByCode(productCodeList: Array<string>)</code>
+                        <code>getCategories(limit: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                     </td>
                 </tr>
 
@@ -144,8 +133,6 @@
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Method gets a single price list item record for a given product code.</p>
-</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -155,19 +142,23 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>productCodeList</td>
+                                                        <td>limit</td>
                                                         <td>
-                                                                    <code>Array&lt;string&gt;</code>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                                         </td>
                                                     
                                                     <td>
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code>1000</code>
+                                                        </td>
 
                                                 </tr>
                                         </tbody>
@@ -176,53 +167,11 @@
                             <div>
                             </div>
                             <div class="io-description">
-                                <b>Returns : </b>    <code><a href="../classes/PriceListItem.html" target="_self" >Observable&lt;Array&lt;PriceListItem&gt;&gt;</a></code>
+                                <b>Returns : </b>    <code><a href="../classes/Category.html" target="_self" >Observable&lt;Array&lt;Category&gt;&gt;</a></code>
 
                             </div>
                                 <div class="io-description">
-                                    <p>A hot observable containing the price list item for the request product</p>
-
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="globalFilter"></a>
-                        <span class="name">
-                            <b>
-                            globalFilter
-                            </b>
-                            <a href="#globalFilter"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>globalFilter()</code>
-                    </td>
-                </tr>
-
-
-
-
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Default price list filter. This service will only return price list items where the price list id equals the current price list id and it has a list price and its active and its effective</p>
-</div>
-
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code>Observable&lt;Array&lt;AFilter&gt;&gt;</code>
-
-                            </div>
-                                <div class="io-description">
-                                    <p>a string observable containing the filter query</p>
-
+                                    
                                 </div>
                     </td>
                 </tr>
@@ -230,50 +179,15 @@
         </table>
 </section>
 
-            <section>
-    
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="type"></a>
-                        <span class="name">
-                            <b>
-                            type
-                            </b>
-                            <a href="#type"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <code>type:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>PriceListItem</code>
-                        </td>
-                    </tr>
 
 
-            </tbody>
-        </table>
-</section>
+
+
 
     </div>
 
 
-
 </div>
-
-
-
-
 
 
 
@@ -297,8 +211,8 @@
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'PriceListItemService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'CategoryServiceAIC.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
