@@ -178,13 +178,13 @@ let tp = lithtml.html(`<nav>
                     <a href="modules/ConstraintRulesModule.html" data-type="entity-link">ConstraintRulesModule</a>
                 <li class="chapter inner">
                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                        'data-target="#components-links-module-ConstraintRulesModule-03470fcfcb6b49cfc8aa64e1952d794e"' : 'data-target="#xs-components-links-module-ConstraintRulesModule-03470fcfcb6b49cfc8aa64e1952d794e"' }>
+                        'data-target="#components-links-module-ConstraintRulesModule-397b133069117f5c7db1470e8918b7b8"' : 'data-target="#xs-components-links-module-ConstraintRulesModule-397b133069117f5c7db1470e8918b7b8"' }>
                         <span class="icon ion-md-cog"></span>
                         <span>Components</span>
                         <span class="icon ion-ios-arrow-down"></span>
                     </div>
-                    <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ConstraintRulesModule-03470fcfcb6b49cfc8aa64e1952d794e"' :
-                        'id="xs-components-links-module-ConstraintRulesModule-03470fcfcb6b49cfc8aa64e1952d794e"' }>
+                    <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ConstraintRulesModule-397b133069117f5c7db1470e8918b7b8"' :
+                        'id="xs-components-links-module-ConstraintRulesModule-397b133069117f5c7db1470e8918b7b8"' }>
                         <li class="link">
                             <a href="components/CRAddToCartComponent.html"
                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">CRAddToCartComponent</a>
@@ -220,6 +220,21 @@ let tp = lithtml.html(`<nav>
                         <li class="link">
                             <a href="components/ProductCarouselComponent.html"
                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">ProductCarouselComponent</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="chapter inner">
+                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                        'data-target="#injectables-links-module-ConstraintRulesModule-397b133069117f5c7db1470e8918b7b8"' : 'data-target="#xs-injectables-links-module-ConstraintRulesModule-397b133069117f5c7db1470e8918b7b8"' }>
+                        <span class="icon ion-md-arrow-round-down"></span>
+                        <span>Injectables</span>
+                        <span class="icon ion-ios-arrow-down"></span>
+                    </div>
+                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-ConstraintRulesModule-397b133069117f5c7db1470e8918b7b8"' :
+                        'id="xs-injectables-links-module-ConstraintRulesModule-397b133069117f5c7db1470e8918b7b8"' }>
+                        <li class="link">
+                            <a href="injectables/ConstraintRuleService.html"
+                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>ConstraintRuleService</a>
                         </li>
                     </ul>
                 </li>
