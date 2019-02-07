@@ -468,7 +468,7 @@
   &lt;div class&#x3D;&quot;card&quot; *ngIf&#x3D;&quot;type &#x3D;&#x3D; &#x27;card&#x27;&quot;&gt;
     &lt;a href&#x3D;&quot;javascript:void(0)&quot; [routerLink]&#x3D;&quot;[&#x27;/product&#x27;, product[identifier]]&quot; class&#x3D;&quot;pt-3&quot;&gt;
       &lt;div class&#x3D;&quot;img-container&quot;&gt;
-        &lt;img class&#x3D;&quot;card-img-top w-50 m-auto d-flex align-self-center&quot; [src]&#x3D;&quot;product.IconId | image: true: true: product[identifier]&quot; [alt]&#x3D;&quot;product.Name&quot;
+        &lt;img class&#x3D;&quot;card-img-top w-50 m-auto d-flex align-self-center&quot; [src]&#x3D;&quot;product.IconId | image&quot; [alt]&#x3D;&quot;product.Name&quot;
           *ngIf&#x3D;&quot;thumbnail&quot;&gt;
       &lt;/div&gt;
 
@@ -538,6 +538,10 @@ img{
 .img-container{
     height: 8rem;
 }
+star-rating{
+    margin-left: -7px;
+    margin-top: -3px;
+}
 
 .split-items&gt;*{
     border-radius: 0;
@@ -553,15 +557,11 @@ img{
 }
 .product-code{
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 50%;
 }
 .product-category{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 50%;
 }</code></pre>
     </div>
 
@@ -590,7 +590,7 @@ img{
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="product && product[identifier]">  <div class="card" *ngIf="type == \'card\'">    <a href="javascript:void(0)" [routerLink]="[\'/product\', product[identifier]]" class="pt-3">      <div class="img-container">        <img class="card-img-top w-50 m-auto d-flex align-self-center" [src]="product.IconId | image: true: true: product[identifier]" [alt]="product.Name"          *ngIf="thumbnail">      </div>      <div class="card-body">        <h5 class="card-title mb-0">{{product.Name}}</h5>        <div class="d-flex mb-3 align-items-center split-items">          <small class="text-muted product-code" *ngIf="showCode">{{product.ProductCode}}</small>          <small class="text-muted product-category" *ngIf="showCategory && product.Categories?.length > 0">{{product.Categories[0]?.Classification?.Name}}</small>        </div>        <p class="card-text font-weight-bold" *ngIf="showPrice">          <apt-price [record]="product"></apt-price>        </p>      </div>    </a>    <div class="card-footer" *ngIf="canAddToCart">      <apt-cr-add-to-cart [constraintRuleList]="constraintRuleList" [product]="product"></apt-cr-add-to-cart>    </div>  </div>  <div *ngIf="type == \'media\'" class="media">    <a href="javascript:void(0)" [routerLink]="[\'/product\', product[identifier]]" class="d-flex justify-content-center w-25">      <img class="mr-3" [src]="product.IconId | image" [alt]="product.Name">    </a>    <div class="media-body px-3">      <h5 class="m-0">        <a href="javascript:void(0)" [routerLink]="[\'/product\', product[identifier]]">          {{product.Name}}        </a>      </h5>      <div class="d-flex mb-3 align-items-center split-items">        <div class="text-muted" *ngIf="showCode">{{product.ProductCode}}</div>        <div class="text-muted" *ngIf="showCategory && product.Categories?.length > 0">{{product.Categories[0]?.Classification?.Name}}</div>      </div>      {{product.Description}}    </div>    <div class="pl-4 align-self-stretch d-flex align-items-start flex-column justify-content-end">      <strong class="mb-auto align-self-end" *ngIf="showPrice">        <apt-price [record]="product"></apt-price>      </strong>      <apt-cr-add-to-cart [product]="product" [constraintRuleList]="constraintRuleList" *ngIf="canAddToCart"></apt-cr-add-to-cart>    </div>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="product && product[identifier]">  <div class="card" *ngIf="type == \'card\'">    <a href="javascript:void(0)" [routerLink]="[\'/product\', product[identifier]]" class="pt-3">      <div class="img-container">        <img class="card-img-top w-50 m-auto d-flex align-self-center" [src]="product.IconId | image" [alt]="product.Name"          *ngIf="thumbnail">      </div>      <div class="card-body">        <h5 class="card-title mb-0">{{product.Name}}</h5>        <div class="d-flex mb-3 align-items-center split-items">          <small class="text-muted product-code" *ngIf="showCode">{{product.ProductCode}}</small>          <small class="text-muted product-category" *ngIf="showCategory && product.Categories?.length > 0">{{product.Categories[0]?.Classification?.Name}}</small>        </div>        <p class="card-text font-weight-bold" *ngIf="showPrice">          <apt-price [record]="product"></apt-price>        </p>      </div>    </a>    <div class="card-footer" *ngIf="canAddToCart">      <apt-cr-add-to-cart [constraintRuleList]="constraintRuleList" [product]="product"></apt-cr-add-to-cart>    </div>  </div>  <div *ngIf="type == \'media\'" class="media">    <a href="javascript:void(0)" [routerLink]="[\'/product\', product[identifier]]" class="d-flex justify-content-center w-25">      <img class="mr-3" [src]="product.IconId | image" [alt]="product.Name">    </a>    <div class="media-body px-3">      <h5 class="m-0">        <a href="javascript:void(0)" [routerLink]="[\'/product\', product[identifier]]">          {{product.Name}}        </a>      </h5>      <div class="d-flex mb-3 align-items-center split-items">        <div class="text-muted" *ngIf="showCode">{{product.ProductCode}}</div>        <div class="text-muted" *ngIf="showCategory && product.Categories?.length > 0">{{product.Categories[0]?.Classification?.Name}}</div>      </div>      {{product.Description}}    </div>    <div class="pl-4 align-self-stretch d-flex align-items-start flex-column justify-content-end">      <strong class="mb-auto align-self-end" *ngIf="showPrice">        <apt-price [record]="product"></apt-price>      </strong>      <apt-cr-add-to-cart [product]="product" [constraintRuleList]="constraintRuleList" *ngIf="canAddToCart"></apt-cr-add-to-cart>    </div>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'apt-address'},{'name': 'AddToCartComponent', 'selector': 'apt-add-to-cart'},{'name': 'AddToCartDialogComponent', 'selector': 'lib-add-to-cart-dialog'},{'name': 'BreadcrumbComponent', 'selector': 'apt-breadcrumb'},{'name': 'CRAddToCartComponent', 'selector': 'apt-cr-add-to-cart'},{'name': 'CRConstraintAlertComponent', 'selector': 'apt-cr-constraint-alert'},{'name': 'CRIconComponent', 'selector': 'apt-cr-constraint-icon'},{'name': 'CRModalComponent', 'selector': 'apt-cr-modal'},{'name': 'CRPopoverComponent', 'selector': 'apt-cr-popover'},{'name': 'CRProductCardComponent', 'selector': 'apt-cr-product-card'},{'name': 'CRProductCarouselComponent', 'selector': 'apt-cr-product-carousel'},{'name': 'CRRecommendedProductsComponent', 'selector': 'apt-cr-recommended-products'},{'name': 'CRSideMenuComponent', 'selector': 'apt-cr-side-menu'},{'name': 'DependentPicklistComponent', 'selector': 'apt-dependent-picklist'},{'name': 'InputFieldComponent', 'selector': 'apt-input-field'},{'name': 'InputQuantityComponent', 'selector': 'apt-input-quantity'},{'name': 'JumbotronComponent', 'selector': 'apt-jumbotron'},{'name': 'MdSpinnerComponent', 'selector': 'apt-md-spinner'},{'name': 'MiniCartComponent', 'selector': 'apt-mini-cart'},{'name': 'MiniProfileComponent', 'selector': 'apt-mini-profile'},{'name': 'PriceComponent', 'selector': 'apt-price'},{'name': 'ProductCardComponent', 'selector': 'apt-product-card'},{'name': 'ProductCarouselComponent', 'selector': 'apt-product-carousel'},{'name': 'ProductImagesComponent', 'selector': 'apt-product-images'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CRProductCardComponent'};

@@ -437,7 +437,7 @@
       &lt;div class&#x3D;&quot;border-top pt-3&quot;&gt;
         &lt;div *ngFor&#x3D;&quot;let rule of productInclusionRules&quot; class&#x3D;&quot;d-flex justify-content-between&quot;&gt;
           &lt;ng-container *ngIf&#x3D;&quot;rule.ProductScope &#x3D;&#x3D;&#x3D; &#x27;Product&#x27;&quot;&gt;
-            &lt;a [routerLink]&#x3D;&quot;[&#x27;/product&#x27;, rule.Product[productService.configurationService.get(&#x27;productIdentifier&#x27;)]]&quot; *ngIf&#x3D;&quot;rule?.Product?.Id&quot; href&#x3D;&quot;javascript:void(0)&quot;&gt;{{rule?.Product?.Name}}&lt;/a&gt;
+            &lt;a [routerLink]&#x3D;&quot;[&#x27;/product&#x27;, rule.Product[productService.config.productIdentifier]]&quot; href&#x3D;&quot;javascript:void(0)&quot;&gt;{{rule?.Product?.Name}}&lt;/a&gt;
             &lt;small&gt;
               &lt;apt-price [record]&#x3D;&quot;rule.Product&quot;&gt;&lt;/apt-price&gt;
             &lt;/small&gt;
@@ -452,7 +452,7 @@
       &lt;/p&gt;
       &lt;div class&#x3D;&quot;border-top pt-3&quot;&gt;
         &lt;div *ngFor&#x3D;&quot;let rule of productExclusionRules&quot; class&#x3D;&quot;d-flex justify-content-between&quot;&gt;
-           &lt;a [routerLink]&#x3D;&quot;[&#x27;/product&#x27;, rule.Product[productService.configurationService.get(&#x27;productIdentifier&#x27;)]]&quot; *ngIf&#x3D;&quot;rule?.Product?.Id&quot; href&#x3D;&quot;javascript:void(0)&quot;&gt;{{rule?.Product?.Name}}&lt;/a&gt; 
+          &lt;a [routerLink]&#x3D;&quot;[&#x27;/product&#x27;, rule.Product[productService.config.productIdentifier]]&quot; href&#x3D;&quot;javascript:void(0)&quot;&gt;{{rule?.Product?.Name}}&lt;/a&gt;
           &lt;small&gt;
             &lt;apt-price [record]&#x3D;&quot;rule.Product&quot;&gt;&lt;/apt-price&gt;
           &lt;/small&gt;
@@ -461,21 +461,7 @@
     &lt;/div&gt;
 
     &lt;div *ngIf&#x3D;&quot;otherRules?.length &gt; 0&quot;&gt;
-      &lt;div *ngFor&#x3D;&quot;let rule of otherRules&quot; &gt;
-        &lt;ng-container *ngIf&#x3D;&quot;rule.ProductScope &#x3D;&#x3D;&#x3D; &#x27;Product Group&#x27;&quot;&gt;
-          &lt;p class&#x3D;&quot;pt-3 mt-3&quot;&gt;
-            Product group &lt;strong&gt;{{rule?.ProductGroup?.Name}}&lt;/strong&gt;
-          &lt;/p&gt;
-        &lt;/ng-container&gt;
-        &lt;ng-container *ngIf&#x3D;&quot;rule.ProductScope &#x3D;&#x3D;&#x3D; &#x27;Product Family&#x27;&quot;&gt;
-          &lt;p class&#x3D;&quot;pt-3 mt-3&quot;&gt;
-            Product family &lt;strong&gt;{{rule?.ProductFamily}}&lt;/strong&gt; 
-          &lt;/p&gt;
-        &lt;/ng-container&gt;
-        &lt;div class&#x3D;&quot;border-top pt-3&quot;&gt;
-          &lt;p [innerHTML]&#x3D;&quot;rule.Message&quot;&gt;&lt;/p&gt; &lt;strong&gt; {{product?.Name}}&lt;/strong&gt;
-        &lt;/div&gt;
-     &lt;/div&gt;
+      &lt;p *ngFor&#x3D;&quot;let rule of otherRules&quot; [innerHTML]&#x3D;&quot;rule.Message&quot;&gt;&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -520,7 +506,7 @@
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="p-2">  <div class="popoverHeader mb-3">    <h5>Product(s) Included / Excluded</h5>  </div>  <div class="popoverBody">    <div *ngIf="message">      <p [innerHTML]="message"></p>    </div>    <div *ngIf="productInclusionRules?.length > 0">      <p>        <strong>The following products </strong> are included with the product <strong> {{product.Name}}</strong>.      </p>      <div class="border-top pt-3">        <div *ngFor="let rule of productInclusionRules" class="d-flex justify-content-between">          <ng-container *ngIf="rule.ProductScope === \'Product\'">            <a [routerLink]="[\'/product\', rule.Product[productService.configurationService.get(\'productIdentifier\')]]" *ngIf="rule?.Product?.Id" href="javascript:void(0)">{{rule?.Product?.Name}}</a>            <small>              <apt-price [record]="rule.Product"></apt-price>            </small>          </ng-container>        </div>      </div>    </div>    <div *ngIf="productExclusionRules?.length > 0">      <p class="border-top pt-3 mt-3">        <strong>The following products </strong> are excluded with the product <strong> {{product.Name}}</strong>.      </p>      <div class="border-top pt-3">        <div *ngFor="let rule of productExclusionRules" class="d-flex justify-content-between">           <a [routerLink]="[\'/product\', rule.Product[productService.configurationService.get(\'productIdentifier\')]]" *ngIf="rule?.Product?.Id" href="javascript:void(0)">{{rule?.Product?.Name}}</a>           <small>            <apt-price [record]="rule.Product"></apt-price>          </small>        </div>      </div>    </div>    <div *ngIf="otherRules?.length > 0">      <div *ngFor="let rule of otherRules" >        <ng-container *ngIf="rule.ProductScope === \'Product Group\'">          <p class="pt-3 mt-3">            Product group <strong>{{rule?.ProductGroup?.Name}}</strong>          </p>        </ng-container>        <ng-container *ngIf="rule.ProductScope === \'Product Family\'">          <p class="pt-3 mt-3">            Product family <strong>{{rule?.ProductFamily}}</strong>           </p>        </ng-container>        <div class="border-top pt-3">          <p [innerHTML]="rule.Message"></p> <strong> {{product?.Name}}</strong>        </div>     </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="p-2">  <div class="popoverHeader mb-3">    <h5>Product(s) Included / Excluded</h5>  </div>  <div class="popoverBody">    <div *ngIf="message">      <p [innerHTML]="message"></p>    </div>    <div *ngIf="productInclusionRules?.length > 0">      <p>        <strong>The following products </strong> are included with the product <strong> {{product.Name}}</strong>.      </p>      <div class="border-top pt-3">        <div *ngFor="let rule of productInclusionRules" class="d-flex justify-content-between">          <ng-container *ngIf="rule.ProductScope === \'Product\'">            <a [routerLink]="[\'/product\', rule.Product[productService.config.productIdentifier]]" href="javascript:void(0)">{{rule?.Product?.Name}}</a>            <small>              <apt-price [record]="rule.Product"></apt-price>            </small>          </ng-container>        </div>      </div>    </div>    <div *ngIf="productExclusionRules?.length > 0">      <p class="border-top pt-3 mt-3">        <strong>The following products </strong> are excluded with the product <strong> {{product.Name}}</strong>.      </p>      <div class="border-top pt-3">        <div *ngFor="let rule of productExclusionRules" class="d-flex justify-content-between">          <a [routerLink]="[\'/product\', rule.Product[productService.config.productIdentifier]]" href="javascript:void(0)">{{rule?.Product?.Name}}</a>          <small>            <apt-price [record]="rule.Product"></apt-price>          </small>        </div>      </div>    </div>    <div *ngIf="otherRules?.length > 0">      <p *ngFor="let rule of otherRules" [innerHTML]="rule.Message"></p>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'apt-address'},{'name': 'AddToCartComponent', 'selector': 'apt-add-to-cart'},{'name': 'AddToCartDialogComponent', 'selector': 'lib-add-to-cart-dialog'},{'name': 'BreadcrumbComponent', 'selector': 'apt-breadcrumb'},{'name': 'CRAddToCartComponent', 'selector': 'apt-cr-add-to-cart'},{'name': 'CRConstraintAlertComponent', 'selector': 'apt-cr-constraint-alert'},{'name': 'CRIconComponent', 'selector': 'apt-cr-constraint-icon'},{'name': 'CRModalComponent', 'selector': 'apt-cr-modal'},{'name': 'CRPopoverComponent', 'selector': 'apt-cr-popover'},{'name': 'CRProductCardComponent', 'selector': 'apt-cr-product-card'},{'name': 'CRProductCarouselComponent', 'selector': 'apt-cr-product-carousel'},{'name': 'CRRecommendedProductsComponent', 'selector': 'apt-cr-recommended-products'},{'name': 'CRSideMenuComponent', 'selector': 'apt-cr-side-menu'},{'name': 'DependentPicklistComponent', 'selector': 'apt-dependent-picklist'},{'name': 'InputFieldComponent', 'selector': 'apt-input-field'},{'name': 'InputQuantityComponent', 'selector': 'apt-input-quantity'},{'name': 'JumbotronComponent', 'selector': 'apt-jumbotron'},{'name': 'MdSpinnerComponent', 'selector': 'apt-md-spinner'},{'name': 'MiniCartComponent', 'selector': 'apt-mini-cart'},{'name': 'MiniProfileComponent', 'selector': 'apt-mini-profile'},{'name': 'PriceComponent', 'selector': 'apt-price'},{'name': 'ProductCardComponent', 'selector': 'apt-product-card'},{'name': 'ProductCarouselComponent', 'selector': 'apt-product-carousel'},{'name': 'ProductImagesComponent', 'selector': 'apt-product-images'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CRPopoverComponent'};
